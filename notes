@@ -1,0 +1,10 @@
+gitlab login with job token 
+semantic versioning + move latest tag
+apply permissions to the repos to have read access to the pre commit repo 
+templating the precommit job
+
+
+git tag -d <tagname>                  # delete the old tag locally
+git push origin :refs/tags/<tagname>  # delete the old tag remotely
+git tag <tagname> <commitId>          # make a new tag locally
+git push origin <tagname>             # push the new local tag to the remote 
