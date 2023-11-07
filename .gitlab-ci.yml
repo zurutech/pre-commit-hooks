@@ -4,7 +4,7 @@ tag latest:
     name: alpine/git
   stage: deploy
   script:
-    - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/zuru.tech/operations/devops/pre-commit-hooks".InsteadOf https://gitlab.com/zuru.tech/operations/devops/pre-commit-hooks
+    - git config --global url."https://gitlab-ci-token:${TAGGING_TOKEN}@gitlab.com/zuru.tech/operations/devops/pre-commit-hooks".InsteadOf https://gitlab.com/zuru.tech/operations/devops/pre-commit-hooks
     - git tag -d latest                  # delete the old tag locally
     - git push origin :refs/tags/latest  # delete the old tag remotely
     - git tag latest HEAD                # make a new tag locally
