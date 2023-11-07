@@ -7,11 +7,11 @@ tag latest:
     - git --version
     - git remote remove origin
     - git remote add origin https://gitlab-ci-token:${TAGGING_TOKEN}@gitlab.com/zuru.tech/operations/devops/pre-commit-hooks
-    - |
-      git tag -d latest                  # delete the old tag locally
-      git push origin :refs/tags/latest  # delete the old tag remotely
-      git tag latest HEAD                # make a new tag locally
-      git push origin latest             # push the new local tag to the remote 
+    - git tag -d latest                  # delete the old tag locally
+    - git push origin :refs/tags/latest  # delete the old tag remotely
+  after_script:
+    - git tag latest HEAD                # make a new tag locally
+    - git push origin latest             # push the new local tag to the remote 
   only:
     - main
   retry: 1
