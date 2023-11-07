@@ -1,6 +1,6 @@
 tag latest:
   image: alpine/git
-  stage: release
+  stage: deploy
   script:
     - git tag -d latest                  # delete the old tag locally
     - git push origin :refs/tags/latest  # delete the old tag remotely
