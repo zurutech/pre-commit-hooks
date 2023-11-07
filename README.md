@@ -30,7 +30,7 @@ The job will use the .pre-commit-config.yaml located in the root directoy of you
       - id: copyright_updater
 ```
 
-The `rev` field indicates the tag or the release of the code of this repository. At the moment the `rev` will always have to be `latest` and only the code in the latest commit of the main branch will be used. Since there is no latest tag there will be a warning in the pre-commit job.
+The `rev` field indicates the tag or the release of the code of this repository. At the moment the `rev` will always have to be `latest` and only the code in the latest commit of the main branch will be used. Since there is no latest immutable tag (like a release) there will be a warning in the pre-commit job. The ```tag latest``` job in the pipeline will tag last commit on the main branch with latest.
 
 ## Add pre-commit hooks scripts to this repo
 
