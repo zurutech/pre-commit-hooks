@@ -1,5 +1,7 @@
 tag latest:
-  image: alpine/git
+  image: 
+    entrypoint: [""]
+    name: alpine/git
   stage: deploy
   script:
     - git tag -d latest                  # delete the old tag locally
