@@ -18,6 +18,6 @@
 -   id: generated-header-separated
     name: Check generated header separated
     language: python
-    entry: ./.gitlab/scripts/generated-header-separated
+    entry: generated-header-separated
     files: '^Dreamcatcher/Source/.*\.h$'
     additional_dependencies: []

@@ -1,6 +1,6 @@
 # Pre Commit Hooks
 
-This repository is used to store all zuru scripts that are run in our CI pipelines during the pre-commit job. If you want them in your repo, you'll have to:
+This repository is used to store all scripts that are run in our CI pipelines during the pre-commit job. If you want them in your repository, you'll have to:
 
 - Allow your project under the CI_JOB_TOKEN Access Token settings
 - Add the pre-commit CI template in the .gitlab-ci.yml file of your repository
@@ -19,7 +19,7 @@ include:
 
 The template is located [here](https://gitlab.com/zuru.tech/operations/ci-templates/-/blob/main/.pre-commit.yml?ref_type=heads), all the fiels can be overwritten in the pre-commit job of your CI in case you need to do something differently. 
 
-WARNING: if the job gets the forbidden response when downloading the template, make sure that the PRE_COMMIT_TOKEN CI/CD variables is set under the group Zuru Home in gitlab. The token needs the priviledges to read the CI Templates repository.
+WARNING: if the job gets the forbidden response when downloading the template, make sure that the PRE_COMMIT_TOKEN CI/CD variable is set under the group Zuru Home in gitlab. The token needs the priviledges to read the CI Templates repository.
 
 The job will use the .pre-commit-config.yaml located in the root directoy of your repository. An example of how to use a hook:
 
