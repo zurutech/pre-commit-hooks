@@ -1,0 +1,15 @@
+tag latest:
+  image: alpine/git
+  stage: release
+  script:
+    - git tag -d latest                  # delete the old tag locally
+    - git push origin :refs/tags/latest  # delete the old tag remotely
+    - git tag latest HEAD                # make a new tag locally
+    - git push origin latest             # push the new local tag to the remote 
+  only:
+    - main
+  retry: 1
+  tags:
+    - linux
+    - docker
+    - t0
