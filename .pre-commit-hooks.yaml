@@ -11,7 +11,7 @@
     name: Check locks
     description: ''
     language: python
-    entry: soft-lock/pre_commit
+    entry: check_locks
     additional_dependencies: []
     always_run: true
     pass_filenames: false
