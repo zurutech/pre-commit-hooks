@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import lock_globals
+from . import lock_globals
 
 
 def get_modified_files():

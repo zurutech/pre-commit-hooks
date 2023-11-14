@@ -3,7 +3,7 @@
 import os
 import shutil
 
-import lock_globals
+from . import lock_globals
 
 
 def main():

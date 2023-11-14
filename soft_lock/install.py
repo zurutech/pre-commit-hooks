@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import shutil
 
-import lock_globals
+from . import lock_globals
 
 
 def find_bash_config():

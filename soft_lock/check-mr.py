@@ -2,7 +2,7 @@
 import argparse
 import sys
 
-import lock_globals
+from . import lock_globals
 
 
 def main():

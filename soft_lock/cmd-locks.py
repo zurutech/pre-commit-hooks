@@ -8,7 +8,7 @@ import functools
 from fnmatch import fnmatch
 from pathlib import Path
 
-import lock_globals
+from . import lock_globals
 
 
 def right_chop(s, suffix) -> str:
