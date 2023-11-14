@@ -82,7 +82,10 @@ def main() -> int:
             if comments:
                 comments = reduce(concat, [list(filter(None, x)) for x in comments])
                 for comment in comments:
-                    if "copyright" in comment.lower():
+                    if "copyright" in comment.lower() and not "zuru tech" in comment.lower():
+                        replaced = True
+                        break
+                    elif "copyright" in comment.lower():
                         content = content.replace(comment, f"{notice}\n", 1)
                         replaced = True
                         break
