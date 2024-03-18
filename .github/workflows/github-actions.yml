@@ -25,6 +25,7 @@ jobs:
 
       - name: Remove existing latest tag locally and remotely
         run: |
+          git config --global --add safe.directory /__w/pre-commit-hooks/pre-commit-hooks
           git tag -d latest || true # Ignore error if tag doesn't exist
           git push origin :refs/tags/latest || true # Ignore error if tag doesn't exist
 
