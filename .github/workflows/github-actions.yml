@@ -30,6 +30,7 @@ jobs:
 
       - name: Tag HEAD as latest
         run: |
+          git config --global --add safe.directory pre-commit-hooks/pre-commit-hooks
           git tag latest HEAD
           git push origin latest
 
