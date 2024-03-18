@@ -4,3 +4,5 @@
 .coverage
 .tox
 dist
+.DS_Store
+.vscode/*

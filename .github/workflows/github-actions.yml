@@ -1,0 +1,36 @@
+name: Update Latest Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag-latest:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine/git
+      options: --entrypoint ""
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Necessary for tag manipulation
+
+      # - name: Configure Git
+      #   run: |
+      #     git config --global user.name "Your Name"
+      #     git config --global user.email "youremail@example.com"
+
+      - name: Remove existing latest tag locally and remotely
+        run: |
+          git tag -d latest || true # Ignore error if tag doesn't exist
+          git push origin :refs/tags/latest || true # Ignore error if tag doesn't exist
+
+      - name: Tag HEAD as latest
+        run: |
+          git tag latest HEAD
+          git push origin latest
+
+    timeout-minutes: 10

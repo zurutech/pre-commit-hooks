@@ -21,3 +21,9 @@
     entry: generated_header_separated
     files: '^Dreamcatcher/Source/.*\.h$'
     additional_dependencies: []
+-   id: dcfiles_updated
+    name: Check if the committed dcfiles are updated to the latest version
+    entry: python ./.gitlab/scripts/dcfiles-updated.py
+    language: python
+    files: '.*\.dc$'
+    additional_dependencies: []
