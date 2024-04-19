@@ -1,6 +1,6 @@
-# Copyright (c) 2014-2023 Zuru Tech HK Limited, All rights reserved.
-
 #!/usr/bin/env python
+
+# Copyright (c) 2014-2024 Zuru Tech HK Limited, All rights reserved.
 
 import argparse
 import re
