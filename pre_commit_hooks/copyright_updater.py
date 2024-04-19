@@ -90,7 +90,12 @@ def main() -> int:
                         replaced = True
                         break
             if not comments or (not replaced and comments):
-                content = f"{notice}\n\n" + content
+                lines = content.split("\n")
+                if lines[0].startswith("#!"):
+                    lines.insert(2, notice)
+                else:
+                    lines.insert(0, notice)
+                content = "\n".join(lines)
 
         # Write the new content with unix style EOL (otherwise, on windows it would be "\r\n")
         if original_content != content:
