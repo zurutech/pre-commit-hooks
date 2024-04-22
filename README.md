@@ -25,7 +25,7 @@ The job will use the .pre-commit-config.yaml located in the root directoy of you
 
 ```yaml
 - repo: https://github.com/zurutech/pre-commit-hooks
-  rev: latest
+  rev: v5.0.0
   hooks:
     - id: copyright_updater
 ```
