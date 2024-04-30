@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-set -e
-"$(dirname "$0")/run_python" "$(dirname "$0")/cli_utils.py" history $@
