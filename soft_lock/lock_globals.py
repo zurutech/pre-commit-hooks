@@ -1,9 +1,11 @@
-import distutils.spawn
+# Copyright (c) 2014-2024 Zuru Tech HK Limited, All rights reserved.
+
 import glob
 import http.client
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -67,7 +69,7 @@ def make_post(authorization, path, body, return_error=False) -> dict:
         connection.request("POST", path, data, headers)
         response = connection.getresponse()
         response_body = response.read().decode()
-        if response.status != 200 and response.status != 400:
+        if response.status not in (200, 400):
             if response.status == 401:
                 raise NotAuthorizedError("Not authorized")
             print(
@@ -166,7 +168,7 @@ def find_ssh():
     if isinstance(ssh, str):
         return ssh
 
-    from_path = distutils.spawn.find_executable("ssh")
+    from_path = shutil.which("ssh")
     if isinstance(from_path, str):
         print_verbose(f"ssh found: {from_path}")
         return from_path
@@ -208,7 +210,7 @@ def find_authorization(repo_path) -> str:
     user_data_path = home / "user-data"
     print_verbose(f"Loading {user_data_path}")
     if user_data_path.exists():
-        with open(user_data_path) as f:
+        with open(user_data_path, "r", encoding="UTF-8") as f:
             user_data = json.load(f)
 
         zsl_authorization = _validate_and_get_authorization(user_data)
@@ -220,7 +222,7 @@ def find_authorization(repo_path) -> str:
     user_data = make_post(lfs_authorization, "/authenticate", {})
     g_user_data = user_data
 
-    with open(user_data_path, "w") as f:
+    with open(user_data_path, "w", encoding="UTF-8") as f:
         json.dump(user_data, f, indent=2)
 
     return lfs_authorization
@@ -257,7 +259,7 @@ def spawn(args: List, stdin=""):
     program = " ".join([str(it) for it in args])
     print_verbose("running " + program)
     process = subprocess.Popen(args, stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-    (output, err) = process.communicate(input=stdin.encode())
+    output, _ = process.communicate(input=stdin.encode())
     exit_code = process.wait()
     if exit_code != 0:
         _spawn_error(exit_code)
@@ -292,10 +294,7 @@ def get_upstream_branch(git_root):
     ).strip()
     if local_branch == "HEAD":
         print(f"Repository: {git_root}", file=sys.stderr)
-        print(
-            f"ERROR: detached HEAD",
-            file=sys.stderr,
-        )
+        print("ERROR: detached HEAD", file=sys.stderr)
         sys.exit(1)
 
     status = spawn(
@@ -318,7 +317,7 @@ def get_upstream_branch(git_root):
 
     if len(status) == 0 or not status[0].startswith("origin/"):
         print(f"Repository: {git_root}", file=sys.stderr)
-        print(f"ERROR: no upstream configured for current branch", file=sys.stderr)
+        print("ERROR: no upstream configured for current branch", file=sys.stderr)
         print(
             f"You can set upstream with\ngit push -u origin {local_branch}",
             file=sys.stderr,
