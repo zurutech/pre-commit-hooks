@@ -23,7 +23,7 @@
     additional_dependencies: []
 -   id: dcfiles_updated
     name: Check if the committed dcfiles are updated to the latest version
-    entry: dcfiles-updated
+    entry: dcfiles_updated
     language: python
     files: '.*\.dc$'
     additional_dependencies: []
