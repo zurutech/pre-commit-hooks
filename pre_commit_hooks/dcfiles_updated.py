@@ -28,15 +28,15 @@ def main():
         encoding="utf-8",
     ) as fp:
         for line in fp:
-            if "DCFILE_VERSION" in line:
-                result = re.search(r"DCFILE_VERSION = \"v(\d+)\.(\d+)\.(\d+)\"", line)
+            if "DCFileVersion" in line:
+                result = re.search(r"DCFileVersion = \"v(\d+)\.(\d+)\.(\d+)\"", line)
                 if not result:
-                    print("Unable to extract DCFILE_VERSION value", file=sys.stderr)
+                    print("Unable to extract DCFileVersion value", file=sys.stderr)
                     return 1
                 version = f"{result.group(1)}.{result.group(2)}.{result.group(3)}"
                 break
     if not version:
-        print("Unable to find DCFILE_VERSION", file=sys.stderr)
+        print("Unable to find DCFileVersion", file=sys.stderr)
         return 1
 
     for dcfile in sys.argv[1:]:
