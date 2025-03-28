@@ -23,7 +23,7 @@ def main():
 
     version = ""
     with io.open(
-        "Dreamcatcher/Plugins/BIMCore/Source/DCInterfaces/Public/Source/ExportData/ExpStructs.h",
+        "Dreamcatcher/Plugins/BIMCore/Source/DCInterfaces/Public/Source/IO/Structs/Project.h",
         "r",
         encoding="utf-8",
     ) as fp:
