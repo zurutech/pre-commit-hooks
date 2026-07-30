@@ -27,3 +27,10 @@
     language: python
     files: '.*\.dc$'
     additional_dependencies: []
+-   id: generate_error_string_tables
+    name: Check if the ErrorTable folder has been modified in local
+    entry: generate_error_string_tables
+    language: python
+    files: '^Dreamcatcher/Content/Errors/ErrorTables/.*\.csv$'
+    pass_filenames: false
+    additional_dependencies: []
