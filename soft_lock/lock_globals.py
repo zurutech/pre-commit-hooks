@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Iterator, List
 
 USE_HTTPS = True
-HOST = "api.zuru-soft-lock.dreamcatcher.zuru.link"
+HOST = "zsl.zuru.click"
 PORT = 443
 
 # changed via CLI
