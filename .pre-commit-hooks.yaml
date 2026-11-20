@@ -5,7 +5,7 @@
     entry: copyright_updater
     args: ["--files"]
     additional_dependencies: []
-    files: '.*\.(h|cpp|cs|py|pyi)$'
+    files: '.*\.(h|cpp|cppm|cs|py|pyi)$'
     pass_filenames: true
 -   id: check_locks
     name: Check locks

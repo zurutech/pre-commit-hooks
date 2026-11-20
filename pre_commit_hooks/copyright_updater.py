@@ -12,14 +12,15 @@ from operator import concat
 from pathlib import Path
 
 NEW_NOTICE = f" Copyright (c) 2014-{date.today().year} Zuru Tech HK Limited, All rights reserved."
-SUPPORTED_EXTENSIONS = ["h", "cpp", "cs", "py"]
+SUPPORTED_EXTENSIONS = ["h", "cpp", "cppm", "cs", "py"]
 EXTENSIONS_REGEX = {
     "h": r"(/\*.*?\*/)|(//[^\n]*\n)",
     "cpp": r"(/\*.*?\*/)|(//[^\n]*\n)",
+    "cppm": r"(/\*.*?\*/)|(//[^\n]*\n)",
     "cs": r"(/\*.*?\*/)|(//[^\n]*\n)",
     "py": r"('''.*?''')|(\"\"\".*?\"\"\")|(#[^\n]*\n)",
 }
-EXTENSIONS_COMMENT = {"h": "//", "cpp": "//", "cs": "//", "py": "#"}
+EXTENSIONS_COMMENT = {"h": "//", "cpp": "//", "cppm": "//", "cs": "//", "py": "#"}
 
 
 def getArguments() -> argparse.Namespace:
